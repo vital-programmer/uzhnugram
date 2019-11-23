@@ -1,0 +1,103 @@
+.header {
+	position: fixed;
+	background-color: #0a025b;
+	color: grey;
+	text-align: left;
+	height: 55px;
+	width: 100%;
+	margin: -8px;
+}
+#site_logo {
+	position: absolute;
+	left: 550px;
+}
+#uzhnu_logo {
+	position: absolute;
+	top: 2px;
+	left: 500px;
+}
+.head {
+	font-size: 30px;
+	border: medium solid black;
+	color: black;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.main {
+	background-color: #fce37a;
+	color: red; 
+}
+.layout {
+	position: relative;
+}
+.layout div {
+	position: absolute;
+	top: 47px;
+}
+.col1 {
+	background-image: url(columns.png);
+	color: #0a025b;
+	right: 50%;
+	left: 0;
+	height: 602px;
+	margin-right: 435px;
+	margin-left: -9px;
+}
+.col2 {
+	background-color: #fce37a;
+	left: 50%;
+	height: 536px;
+	width: 870px;
+	margin-left: -435px;
+}
+.col3 {
+	background-image: url(columns.png);
+	color: #0a025b;
+	right: 0;
+	left: 50%;
+	height: 602px;
+	margin-right: -8px;
+	margin-left: 435px;
+}
+.footer {
+	position: relative;
+	background-color: #0a025b;
+	color: #303030;
+	text-align: center;	
+}
+.footer div {
+	position: absolute;
+	top: 545px;
+}
+.col_1 {
+	background-color: transparent;
+	right: 50%;
+	left: 0;
+	margin-right: 435px;
+	margin-left: -9px;
+}
+.col_2 {
+	background-image: url(footer.png);
+	left: 50%;
+	width: 870px;
+	margin-left: -435px;
+}
+.col_2 ul{
+	text-align: left;
+	list-style: none;
+}
+.col_2 ul a {
+	color: grey;
+    text-decoration: none;
+	text-transform: uppercase;
+}
+.col_3 {
+	background-color: transparent;
+	right: 0;
+	left: 50%;
+	margin-right: -8px;
+	margin-left: 435px;
+}
