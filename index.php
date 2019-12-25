@@ -19,25 +19,39 @@ try {
         isset($_POST['faculty'])  &&
         isset($_POST['speciality']))
     {
-        $query = "INSERT INTO system_info VALUES (NULL, :login, :password, :year_of_studying, :faculty, :speciality)";
-        $user = $conn->prepare($query);
-        $user->execute(['login' => $_POST['login'], 'password' => $_POST['password'],
-            'year_of_studying' => $_POST['year_of_studying'], 'faculty' => $_POST['faculty'],
-            'speciality' => $_POST['speciality']]);
 
-        $user_id = $conn->lastInsertId();
-
-        $query = "INSERT INTO info_to_show VALUES (NULL, :name, :surname, :achievements, :about, :instagram, :facebook,
-:user_id)";
-        $user = $conn->prepare($query);
-        $user->execute(['name' => "Ім'я", 'surname' => "Прізвище", 'achievements' => "Досягнення",
-            'about' => "Інформація", 'instagram' => "Посилання на Instagram", 'facebook' => "Посилання на Facebook",
-            'user_id' => $user_id]);
-        if ($user) {
-            $msg = "Реєстрація минула успішно!";
+        $login = $_POST['login'];
+        $query = "SELECT * FROM system_info WHERE login='$login'";
+        $user = $conn->query($query);
+        $count = $user->rowCount();
+        if($count == 1)
+        {
+            $flsmsg = "Даний нікнейм уже використовується! Оберіть інший.";
         }
-        else {
-            $flsmsg = "Помилка!";
+
+        if ($count == 0)
+        {
+            $query = "INSERT INTO system_info VALUES (NULL, :login, :password, :year_of_studying, :faculty,
+            :speciality)";
+            $user = $conn->prepare($query);
+            $user->execute(['login' => $_POST['login'], 'password' => $_POST['password'],
+                'year_of_studying' => $_POST['year_of_studying'], 'faculty' => $_POST['faculty'],
+                'speciality' => $_POST['speciality']]);
+
+            $user_id = $conn->lastInsertId();
+
+            $query = "INSERT INTO info_to_show VALUES (NULL, :name, :surname, :achievements, :about, :instagram,
+            :facebook, :user_id)";
+            $user = $conn->prepare($query);
+            $user->execute(['name' => "Ім'я", 'surname' => "Прізвище", 'achievements' => "Досягнення",
+                'about' => "Інформація", 'instagram' => "Посилання на Instagram", 'facebook' => "Посилання на Facebook",
+                'user_id' => $user_id]);
+            if ($user) {
+                $msg = "Реєстрація минула успішно!";
+            }
+            else {
+                $flsmsg = "Помилка!";
+            }
         }
     }
 }
