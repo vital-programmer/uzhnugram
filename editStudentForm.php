@@ -25,8 +25,10 @@
         <form action="editStudent.php" method="post">
             <input type="text" name="name" placeholder="Ім'я" required><br>
             <input type="text" name="surname" placeholder="Прізвище" required><br>
-            <input type="text" name="achievements" placeholder="Досягнення" required><br>
-            <input type="text" name="about" placeholder="Про себе" required><br>
+            <textarea name="achievements" placeholder="Досягнення" required></textarea><br>
+            <textarea name="about" placeholder="Про себе" required></textarea><br>
+         <!--   <input type="text" name="achievements" placeholder="Досягнення" required><br>
+            <input type="text" name="about" placeholder="Про себе" required><br> -->
             <input type="text" name="instagram" placeholder="Instagram" required><br>
             <input type="text" name="facebook" placeholder="Facebook" required><br>
  <!--           <textarea name="achievements"></textarea><br>
