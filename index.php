@@ -5,13 +5,55 @@
     <title>Uzhnugram</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel = "stylesheet" type = "text/css" href = "styles.css">
+    <link rel = "stylesheet" type = "text/css" href = "styles3.css">
 </head>
 <body>
 
+<?php
+try {
+    $conn = new PDO("mysql:host=localhost; dbname=students", 'root', '');
+
+    if (isset($_POST['login']) &&
+        isset($_POST['password'])  &&
+        isset($_POST['year_of_studying'])  &&
+        isset($_POST['faculty'])  &&
+        isset($_POST['speciality']))
+    {
+        $query = "INSERT INTO system_info VALUES (NULL, :login, :password, :year_of_studying, :faculty, :speciality)";
+        $user = $conn->prepare($query);
+        $user->execute(['login' => $_POST['login'], 'password' => $_POST['password'],
+            'year_of_studying' => $_POST['year_of_studying'], 'faculty' => $_POST['faculty'],
+            'speciality' => $_POST['speciality']]);
+
+        $user_id = $conn->lastInsertId();
+
+        $query = "INSERT INTO info_to_show VALUES (NULL, :name, :surname, :achievements, :about, :instagram, :facebook,
+:user_id)";
+        $user = $conn->prepare($query);
+        $user->execute(['name' => "Ім'я", 'surname' => "Прізвище", 'achievements' => "Досягнення",
+            'about' => "Інформація", 'instagram' => "Посилання на Instagram", 'facebook' => "Посилання на Facebook",
+            'user_id' => $user_id]);
+        if ($user) {
+            $msg = "Реєстрація минула успішно!";
+        }
+        else {
+            $flsmsg = "Помилка!";
+        }
+    }
+}
+
+catch (PDOException $e)
+{
+    echo "error".$e->getMessage();
+}
+
+?>
+
 <div class="container">
-    <form class="form-signin" action="addStudent.php" method="post">
+    <form class="form-signin" method="post">
         <h2>Реєстрація</h2>
+        <?php if(isset($msg)){?> <div class="alert alert-success" role="alert"><?php echo $msg ?></div> <?php }?>
+        <?php if(isset($flsmsg)){?> <div class="alert alert-danger" role="alert"><?php echo $flsmsg ?></div> <?php }?>
         <input type="text" name="login" class="form-control" placeholder="Логін" required>
         <input type="password" name="password" class="form-control" placeholder="Пароль" required>
         <select size="1" name="year_of_studying" class="form-control">

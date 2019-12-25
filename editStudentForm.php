@@ -4,14 +4,14 @@
     <meta charset = "UTF-8">
     <title>Uzhnugram</title>
     <link rel = "stylesheet" type = "text/css"
-          href = "styles2.css">
+          href = "styles3.css">
 </head>
 <body class = "main">
 <div class = "header">
     <img id = "uzhnu_logo" src="images\UzhNU_logo.png">
     <img id = "site_logo" src="images\site_logo.png" align="center">
-    <a href="logout.php">Вийти</a>
-    <a href="editStudent.php">Редагувати інформацію про себе</a>
+    <a id = "logout" href="logout.php">Вийти</a>
+    <a id = "edit" href="editStudentForm.php">Редагувати</a>
 </div>
 <div class = "layout">
     <div class = "col1">Кол1</div>
@@ -48,9 +48,5 @@
     </div>
     <div class="col_3"></div>
 </div>
-
-
-<script src = "js/jquery-3.4.1.min.js"></script>
-<script src = "js/main.js"></script>
 </body>
 </html>

@@ -27,6 +27,7 @@ try {
 instagram=:instagram, facebook=:facebook WHERE user_id = $user_id";
     $user = $conn->prepare($query);
     $user->execute($data);
+    header('Location: editSuccess.php');
     echo "Дані успішно оновлено!";
 }
 catch (PDOException $e)
