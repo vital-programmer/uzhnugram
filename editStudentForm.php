@@ -4,14 +4,14 @@
     <meta charset = "UTF-8">
     <title>Uzhnugram</title>
     <link rel = "stylesheet" type = "text/css"
-          href = "styles2.css">
+          href = "styles3.css">
 </head>
 <body class = "main">
 <div class = "header">
     <img id = "uzhnu_logo" src="images\UzhNU_logo.png">
     <img id = "site_logo" src="images\site_logo.png" align="center">
-    <a href="logout.php">Вийти</a>
-    <a href="editStudent.php">Редагувати інформацію про себе</a>
+    <a id = "logout" href="logout.php">Вийти</a>
+    <a id = "edit" href="editStudentForm.php">Редагувати</a>
 </div>
 <div class = "layout">
     <div class = "col1">Кол1</div>
@@ -22,11 +22,18 @@
                         <div class = "about">Студентка УжНУ</div>
                     </div>
                     <div class = "persons_out"></div> -->
-        <form action="editStudent.php" method="post">
+<!--        <form method="post" action="test.php" enctype="multipart/form-data">
+            <input type="file" name="picture">
+            <input type="submit" value="Загрузить">
+        </form> -->
+        <form action="editStudent.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="picture"><br>
             <input type="text" name="name" placeholder="Ім'я" required><br>
             <input type="text" name="surname" placeholder="Прізвище" required><br>
-            <input type="text" name="achievements" placeholder="Досягнення" required><br>
-            <input type="text" name="about" placeholder="Про себе" required><br>
+            <textarea name="achievements" placeholder="Досягнення" required></textarea><br>
+            <textarea name="about" placeholder="Про себе" required></textarea><br>
+         <!--   <input type="text" name="achievements" placeholder="Досягнення" required><br>
+            <input type="text" name="about" placeholder="Про себе" required><br> -->
             <input type="text" name="instagram" placeholder="Instagram" required><br>
             <input type="text" name="facebook" placeholder="Facebook" required><br>
  <!--           <textarea name="achievements"></textarea><br>
@@ -48,9 +55,5 @@
     </div>
     <div class="col_3"></div>
 </div>
-
-
-<script src = "js/jquery-3.4.1.min.js"></script>
-<script src = "js/main.js"></script>
 </body>
 </html>
